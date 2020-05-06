@@ -1,13 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { Platform, Text, View, StyleSheet, Image, TextInput, Button } from 'react-native';
-import Constants from 'expo-constants';
-import * as Location from 'expo-location';
+import React,{useState,useEffect} from 'react';
+import {Modal,Text,View,StyleSheet,Image,TextInput,TouchableOpacity} from 'react-native';
+import * as Localize from 'expo-localization';
+import i18n from 'i18n-js';
+
+const en = {
+  appname: "Farmi-Assist",
+  send: "Submit",
+  cancel: "Clear",
+  problem: "Please Enter Your Problem Here",
+  speak: "Speak your problem"
+}
+
+const kn = {
+  appname: "ಫಾರ್ಮಿ-ಅಸಿಸ್ಟ್",
+  send: "ಸಲ್ಲಿಸಿ",
+  cancel: "ಅಳಿಸಿ",
+  problem: "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಮಸ್ಯೆಯನ್ನು ಇಲ್ಲಿ ನಮೂದಿಸಿ",
+  speak: "ನಿಮ್ಮ ಸಮಸ್ಯೆ ಮಾತನಾಡಿ"
+}
+
+i18n.translations = { kn,en };
+i18n.locale = "en";
 
 export default function App() {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [textinput, setTextinput] = useState('');
   const [addQuery, setAddQuery] = useState('');
+  const [modalVisible,setModalVisible] = useState(true);
 
   const InputTextHandler = (textinput) => {
     setTextinput(textinput);
@@ -18,9 +38,9 @@ export default function App() {
     setTextinput('');
   }
 
-const ClearText = () => {
-  setTextinput('');
-}
+  const ClearText = () => {
+    setTextinput('');
+  }
 
   useEffect(() => {
     (async () => {
@@ -28,39 +48,110 @@ const ClearText = () => {
       if (status !== 'granted') {
         setErrorMsg('Permission to access location was denied');
       }
-
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
     })();
   });
 
   let longitude = 'Waiting..';
-  let latitude = '';
-  let statusheight=Constants.statusBarHeight;
+  let latitude = 'Waiting';
+
   if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
+    longitude='Error!';
+    latitude='Error!';
+  }
+  else if (location) {
     longitude = JSON.stringify(location.coords.longitude);
     latitude = JSON.stringify(location.coords.latitude);
   }
 
   return (
     <View style={styles.bg}>
+      <Modal
+        animationType="slide"
+        transparent={false}
+        visible={modalVisible}>
+        <View style={{ flex:1,backgroundColor:'#1c1c1c', alignItems:'center',justifyContent: 'center' }}>
+        <View style={styles.buttonholder}>
+          <View style={{margin:50, width:90}}>
+            <TouchableOpacity 
+              onPress={() => {
+                i18n.locale = "kn";
+                setModalVisible(!modalVisible);
+              }}
+              style={{alignItems: 'center',
+              padding: 10,backgroundColor: '#009999',
+              borderRadius:24}}>
+                <Text style={styles.textcol}>ಕನ್ನಡ</Text></TouchableOpacity>
+          </View>
+          <View style={{margin:50, width:90}} >
+            <TouchableOpacity 
+              onPress={() => {
+                i18n.locale = "en";
+                setModalVisible(!modalVisible);
+              }}
+              style={{
+                alignItems: 'center',
+                padding: 10,
+                backgroundColor:'#009999',
+                borderRadius:24}}>
+              <Text style={styles.textcol}>English</Text></TouchableOpacity>
+          </View>
+        </View>
+        </View>
+      </Modal>
       <View style={styles.topview}>
-      <Image source={require('./assets/icon.png')} style={{width:50, height:50}}/>
-      <Text style={styles.textcol}>FARMI-ASSIST</Text>
+        <Image
+          source={require('./assets/icon.png')}
+          style={{width:50, height:50}}
+        />
+        <View style={styles.container}><Text style={styles.textcol}>{i18n.t('appname')}</Text></View>
       </View>
-      <View style={styles.container}>
-        <Text style={styles.textcol}>The longiude is:{longitude}</Text>
-        <Text style={styles.textcol}>The latitude is:{latitude}</Text>
+      <Text style={styles.textcol}>{i18n.t('problem')}</Text>
+      <View 
+        style={{
+          backgroundColor:'rgba(195, 195, 162,0.2)',
+          borderRadius: 30,
+          margin:20
+        }}
+      >
+        <TextInput
+          multiline
+          numberOfLines={2}
+          placeholder="......."
+          keyboardAppearance="dark"
+          style={{width: '95%', color: '#ffffff',padding: 15,fontSize:20}}
+          onChangeText={InputTextHandler} value={textinput}
+        />
       </View>
+        <View style={styles.buttonholder}>
+          <View style={{margin:50, width:90}}>
+            <TouchableOpacity 
+              onPress={ClearText}
+              style={{alignItems: 'center',
+              padding: 10,backgroundColor: '#d06060',
+              borderRadius:24}}>
+                <Text style={styles.textcol}>{i18n.t('cancel')}</Text></TouchableOpacity>
+          </View>
+          <View style={{margin:50, width:90}} >
+            <TouchableOpacity 
+              onPress={QueryHandler}
+              style={{
+                alignItems: 'center',
+                padding: 10,
+                backgroundColor:'#79d488',
+                borderRadius:24}}>
+              <Text style={styles.textcol}>{i18n.t('send')}</Text></TouchableOpacity>
+          </View>
+        </View>
       <View style={styles.container}>
-        <TextInput multiline numberOfLines={4} placeholder="Please Enter Your Problem :)" keyboardAppearance="dark" style={{borderColor:'white', borderBottomWidth: 1, width: '95%', color: '#ffffff'}} onChangeText={InputTextHandler} value={textinput}></TextInput>
-        <View style={{flexDirection:'row', alignItems:'center',justifyContent:'space-between', margin:10}}><View style={{margin:10, width:70}}><Button title="Clear" onPress={ClearText} color="#d06060"/></View>
-        <View style={{margin:10, width:70}}><Button title="Submit" onPress={QueryHandler} color="#79d488"/></View></View>
-      </View>
-      <View style={styles.container}>
-        <Button title="Speak the problem" color="#7979f1"/>
+        <TouchableOpacity
+          style={{
+            alignItems: 'center',
+            padding: 12,
+            backgroundColor:'#7979f1',
+            borderRadius:24}}>
+          <Text style={styles.textcol}>{i18n.t('speak')}</Text></TouchableOpacity>
       </View>
       <View style={styles.container}>
         <Text style={styles.textcol}>{addQuery}</Text>
@@ -68,9 +159,10 @@ const ClearText = () => {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   topview: {
-    paddingTop: Constants.statusBarHeight,
+    paddingTop: 40,
     backgroundColor: '#1c1c1c',
     alignItems: 'center',
     justifyContent: 'center'
@@ -86,6 +178,12 @@ const styles = StyleSheet.create({
     flex: 1
   },
   textcol:{
-    color: '#ffffff'
+    color: '#ffffff',
+    fontSize: 20
+  },
+  buttonholder:{
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'space-between'
   }
 });
