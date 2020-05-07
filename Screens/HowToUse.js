@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         flex: 10,
         borderBottomWidth: 1,
         borderBottomColor: 'black',
-        alighnItems: 'stretch'
+        alignItems: 'stretch'
     }
 })
 export default HowToUse;

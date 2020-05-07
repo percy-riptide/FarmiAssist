@@ -24,9 +24,7 @@ function AgriDictionary({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#1c1c1c',
-
-
+        backgroundColor: '#1c1c1c'
     },
     header: {
 
@@ -34,14 +32,13 @@ const styles = StyleSheet.create({
         alignItems: 'stretch',
         flex: 1,
         borderBottomWidth: 1,
-        borderBottomColor: 'black',
-
+        borderBottomColor: 'black'
     },
     Main: {
         flex: 10,
         borderBottomWidth: 1,
         borderBottomColor: 'black',
-        alighnItems: 'stretch'
+        alignItems: 'stretch'
     }
 })
 export default AgriDictionary;

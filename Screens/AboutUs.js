@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     header: {
         flexDirection:'row',
         alignItems:'stretch',
-        flex: 1,
+        flex: 1
       //  borderBottomWidth: 1,
       //  borderBottomColor: 'black',
 
@@ -83,8 +83,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems:'center',
        borderBottomWidth: 1,
-       borderBottomColor: '7B7676',
-        alighnItems:'stretch'
+       borderBottomColor: '#7b7676',
+        alignItems:'stretch'
     },
     Body: {
         flex: 6,

@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     },
     userInfoSection:{
         paddingLeft: 20,
-        borderBottomColor:'#ff'
+        borderBottomColor:'#ffffff'
             },
     title: {
         fontSize: 16,
