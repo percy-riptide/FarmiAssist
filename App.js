@@ -18,7 +18,7 @@ function App() {
     return (
 
 
-        <NavigationContainer >
+        <NavigationContainer>
 
             <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
 
