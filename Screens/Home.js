@@ -29,6 +29,7 @@ const trans={
 
 i18n.translations = { kn, en };
 i18n.locale = "en";
+i18n.fallbacks=true
 
 export default function Home({route, navigation}) {
     const [location, setLocation] = useState(null);
@@ -80,49 +81,18 @@ export default function Home({route, navigation}) {
     else{
         i18n.locale="kn"
     }
+    console.log("hi"+i18n.locale)
     return (
+        
         <View style={styles.bg}>
             <View>
                 <View>
                     <Icon.Button name="ios-menu" size={30} backgroundColor="#1c1c1c" paddingTop={30} onPress={() => navigation.openDrawer()}></Icon.Button>
                 </View>
                 </View>
-   {/*         <Modal
-                animationType="slide"
-                transparent={false}
-                visible={modalVisible}>
-                <View style={{ flex: 1, backgroundColor: '#1c1c1c', alignItems: 'center', justifyContent: 'center' }}>
-                    <View style={styles.buttonholder}>
-                        <View style={{ margin: 50, width: 90 }}>
-                            <TouchableOpacity
-                                onPress={() => {
-                                    i18n.locale = "kn";
-                                    setModalVisible(!modalVisible);
-                                }}
-                                style={{
-                                    alignItems: 'center',
-                                    padding: 10, backgroundColor: '#009999',
-                                    borderRadius: 24
-                                }}>
-                                <Text style={styles.textcol}>ಕನ್ನಡ</Text></TouchableOpacity>
-                        </View>
-                        <View style={{ margin: 50, width: 90 }} >
-                            <TouchableOpacity
-                                onPress={() => {
-                                    i18n.locale = "en";
-                                    setModalVisible(!modalVisible);
-                                }}
-                                style={{
-                                    alignItems: 'center',
-                                    padding: 10,
-                                    backgroundColor: '#009999',
-                                    borderRadius: 24
-                                }}>
-                                <Text style={styles.textcol}>English</Text></TouchableOpacity>
-                        </View>
-                    </View>
-                </View>
-                            </Modal> */}
+   
+                
+                                
             <View style={styles.topview}>
                 <Image
                     source={require('../assets/icon.png')}
@@ -130,7 +100,9 @@ export default function Home({route, navigation}) {
                 />
                 <View style={styles.container}><Text style={styles.textcol}>{i18n.t('appname')}</Text></View>
             </View>
+            <View style={{justifyContent:'center',alignItems:'center'}}>
             <Text style={styles.textcol}>{i18n.t('problem')}</Text>
+           </View>
             <View
                 style={{
                     backgroundColor: 'rgba(195, 195, 162,0.2)',
@@ -184,6 +156,7 @@ export default function Home({route, navigation}) {
                 <Text style={styles.textcol}>{addQuery}</Text>
             </View>
         </View>
+        
     );
 }
 
@@ -202,11 +175,13 @@ const styles = StyleSheet.create({
     },
     bg: {
         backgroundColor: '#1c1c1c',
-        flex: 1
+        flex: 1,
+        paddingRight:10
     },
     textcol: {
         color: '#ffffff',
-        fontSize: 20
+        fontSize: 18,
+        paddingRight:10
     },
     buttonholder: {
         flexDirection: 'row',

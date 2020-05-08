@@ -3,7 +3,20 @@ import { View, StyleSheet,Image } from 'react-native';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { useTheme,Avatar, Title, Caption, Paragraph, Drawer, Text, TouchableRipple, Switch } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import * as Localize from 'expo-localization';
+import i18n from 'i18n-js';
+import en from './Languages/en.json';
+import kn from './Languages/kn.json'
 
+const trans={
+    en: ()=>require('./Languages/en.json'),
+    kn: ()=>require('./Languages/kn.json')
+}
+
+i18n.translations = { kn, en };
+
+
+//i18n.locale = "kn";
 
 function DrawerContent(props) {
     return (
@@ -15,22 +28,22 @@ function DrawerContent(props) {
                             <Image source={require('../assets/icon.png')} style={{ width: 60, height: 60}} />
                         </View>
                         <View style={{flexDirection:'column', alignItems:'center'}}>
-                            <Title style={styles.title}>Farmi-Assist</Title>
-                            <Caption style={styles.caption}>Extending your hand to help</Caption>
+                            <Title style={styles.title}>{i18n.t('appname')}</Title>
+    <Caption style={styles.caption}>{i18n.t('caption')}</Caption>
                         </View>
                     </View>
                     <Drawer.Section style='styles.drawerSection'>
                         <DrawerItem icon={({ color, size }) =>
                             (
                                 <Icon
-                                    name='Language'
+                                    name='home'
                                     color={color}
                                     size={size}
                                 />
                             )}
-                            label="Language"
+                            label={i18n.t('language')}
                             onPress={() => { props.navigation.navigate('Language')}}
-                        />
+                            />
                         <DrawerItem icon={({ color, size }) =>
                             (
                                 <Icon
@@ -39,7 +52,7 @@ function DrawerContent(props) {
                                     size={size}
                                 />
                             )}
-                                label="How to use App"
+                                label={i18n.t('use')}
                                 onPress={() => {props.navigation.navigate('How To Use') }}
                         />
                         <DrawerItem icon={({ color, size }) =>
@@ -50,7 +63,7 @@ function DrawerContent(props) {
                                     size={size}
                                 />
                             )}
-                            label="Agricultural Library"
+                            label={i18n.t('library')}
                                 onPress={() => {props.navigation.navigate('Agricultural Dictionary')}}
                         />
                         <DrawerItem icon={({ color, size }) =>
@@ -61,7 +74,7 @@ function DrawerContent(props) {
                                     size={size}
                                 />
                             )}
-                            label="About"
+                            label={i18n.t('about')}
                                 onPress={() => {props.navigation.navigate('About') }}
                         />
                         

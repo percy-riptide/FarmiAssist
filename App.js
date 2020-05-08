@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo,useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -11,14 +11,21 @@ import { createStackNavigator } from '@react-navigation/stack';
 //import MainTabScreen from './Screens/STACKN';
 import StackA from './Screens/StackAbout'
 import Language from './Screens/Language'
+import * as Localization from 'expo-localization'
 
+export const LocalizationContext = React.createContext();
 const Drawer = createDrawerNavigator();
-function App() {
 
 
+
+    
+    
+
+export default function App() {
+  
     return (
 
-
+        
         <NavigationContainer>
 
             <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
@@ -26,7 +33,7 @@ function App() {
 
 
                 <Drawer.Screen name='Choose Language' component={StackA} />
-                <Drawer.Screen name='Language' component={Language} />
+               <Drawer.Screen name='Language' component={Language} />
                 <Drawer.Screen name='How To Use' component={HowToUse} />
                 <Drawer.Screen name='Agricultural Dictionary' component={AgriDictionary} />
                 <Drawer.Screen name='About' component={AboutUs} />
@@ -36,7 +43,8 @@ function App() {
 
 
         </NavigationContainer>
-
+        
+        
     );
 }
 
@@ -48,4 +56,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
-export default App;
+//export default App;

@@ -3,5 +3,17 @@
     "send": "Submit",
     "cancel": "Clear",
     "problem": "Please Enter Your Problem Here",
-    "speak": "Speak your problem"
+    "speak": "Speak your problem",
+    "caption": "Extending your hand for help",
+    "language": "Language",
+    "use":"How To Use App",
+    "library":"Agricultural Library",
+    "about":"About",
+    "version":"Version 1.0",
+    "git":"Our Git Repositry",
+    "developer":"Developers",
+    "pratik":"Pratik Patil",
+    "manoj":"Manoj Kumar",
+    "shreya":"Shreya Patil",
+    "jyoti":"Jyoti Poddar"
 }

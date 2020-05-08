@@ -11,7 +11,7 @@ export default function StackA(){
     
         <StackHome.Navigator >
             <StackHome.Screen name="Language" component={Language} />
-            <StackHome.Screen name="Home" component={Home}/>
+            <StackHome.Screen name="Home" options={{headerShown:false,}} component={Home}/>
    {/*         <StackHome.Screen name="Result" component={Result} /> */}
             
         </StackHome.Navigator>
