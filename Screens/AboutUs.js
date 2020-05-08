@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
        borderBottomWidth: 1,
        borderBottomColor: '#7b7676',
-        alignItems:'stretch'
+    
     },
     Body: {
         flex: 6,

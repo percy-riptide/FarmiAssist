@@ -23,13 +23,13 @@ function DrawerContent(props) {
                         <DrawerItem icon={({ color, size }) =>
                             (
                                 <Icon
-                                    name='home'
+                                    name='Language'
                                     color={color}
                                     size={size}
                                 />
                             )}
-                            label="Home"
-                            onPress={() => { props.navigation.navigate('Home')}}
+                            label="Language"
+                            onPress={() => { props.navigation.navigate('Language')}}
                         />
                         <DrawerItem icon={({ color, size }) =>
                             (

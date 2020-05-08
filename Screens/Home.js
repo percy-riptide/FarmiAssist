@@ -1,11 +1,13 @@
 ﻿import React, { useState, useEffect } from 'react';
-import { Modal, Text, View, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
+import { Modal, Text, View, StyleSheet, Image, TextInput, TouchableOpacity, I18nManager } from 'react-native';
 import * as Localize from 'expo-localization';
 import i18n from 'i18n-js';
 import Icon from 'react-native-vector-icons/Ionicons';
+import en from './Languages/en.json';
+import kn from './Languages/kn.json'
+//import i18n from './i18n'
 
-
-const en = {
+/*const en = {
     appname: "Farmi-Assist",
     send: "Submit",
     cancel: "Clear",
@@ -19,12 +21,16 @@ const kn = {
     cancel: "ಅಳಿಸಿ",
     problem: "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಮಸ್ಯೆಯನ್ನು ಇಲ್ಲಿ ನಮೂದಿಸಿ",
     speak: "ನಿಮ್ಮ ಸಮಸ್ಯೆ ಮಾತನಾಡಿ"
+}*/
+const trans={
+    en: ()=>require('./Languages/en.json'),
+    kn: ()=>require('./Languages/kn.json')
 }
 
 i18n.translations = { kn, en };
 i18n.locale = "en";
 
-export default function Home({ navigation}) {
+export default function Home({route, navigation}) {
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
     const [textinput, setTextinput] = useState('');
@@ -66,7 +72,14 @@ export default function Home({ navigation}) {
         longitude = JSON.stringify(location.coords.longitude);
         latitude = JSON.stringify(location.coords.latitude);
     }
-
+    const {val}=route.params
+    if(val=='en')
+    {
+        i18n.locale="en"
+    }
+    else{
+        i18n.locale="kn"
+    }
     return (
         <View style={styles.bg}>
             <View>
@@ -74,7 +87,7 @@ export default function Home({ navigation}) {
                     <Icon.Button name="ios-menu" size={30} backgroundColor="#1c1c1c" paddingTop={30} onPress={() => navigation.openDrawer()}></Icon.Button>
                 </View>
                 </View>
-            <Modal
+   {/*         <Modal
                 animationType="slide"
                 transparent={false}
                 visible={modalVisible}>
@@ -109,7 +122,7 @@ export default function Home({ navigation}) {
                         </View>
                     </View>
                 </View>
-            </Modal>
+                            </Modal> */}
             <View style={styles.topview}>
                 <Image
                     source={require('../assets/icon.png')}

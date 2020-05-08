@@ -1,17 +1,23 @@
 import React from 'react';
-import { View } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import Language from './Language';
 import Home from './Home';
-import AboutUs from './AboutUs';
-const StackNavi = createStackNavigator();
-function STACKAb() {
-    return (
-        <StackNavi.Navigator>
-            <StackNavi.Screen name='About US' component={AboutUs} />
+//import Result from './Result';
+const StackHome=createStackNavigator()
 
-
-        </StackNavi.Navigator>
-
+export default function StackA(){
+    return(
+    
+        <StackHome.Navigator >
+            <StackHome.Screen name="Language" component={Language} />
+            <StackHome.Screen name="Home" component={Home}/>
+   {/*         <StackHome.Screen name="Result" component={Result} /> */}
+            
+        </StackHome.Navigator>
+    
     )
 }
-export default STACKAb;
+
+
+

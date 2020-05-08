@@ -9,7 +9,8 @@ import HowToUse from './Screens/HowToUse';
 import DrawerContent from './Screens/DrawerContent';
 import { createStackNavigator } from '@react-navigation/stack';
 //import MainTabScreen from './Screens/STACKN';
-
+import StackA from './Screens/StackAbout'
+import Language from './Screens/Language'
 
 const Drawer = createDrawerNavigator();
 function App() {
@@ -24,8 +25,8 @@ function App() {
 
 
 
-
-                <Drawer.Screen name='Home' component={Home} />
+                <Drawer.Screen name='Choose Language' component={StackA} />
+                <Drawer.Screen name='Language' component={Language} />
                 <Drawer.Screen name='How To Use' component={HowToUse} />
                 <Drawer.Screen name='Agricultural Dictionary' component={AgriDictionary} />
                 <Drawer.Screen name='About' component={AboutUs} />
