@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet,Image } from 'react-native';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
-import { useTheme,Avatar, Title, Caption, Paragraph, Drawer, Text, TouchableRipple, Switch } from 'react-native-paper';
+import { useTheme,Avatar, Title, Caption, Paragraph, Drawer, Text, TouchableRipple } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as Localize from 'expo-localization';
 import i18n from 'i18n-js';
@@ -44,7 +44,7 @@ function DrawerContent(props) {
                             label={i18n.t('language')}
                             onPress={() => { props.navigation.navigate('Language')}}
                             />
-                        <DrawerItem icon={({ color, size }) =>
+                        <DrawerItem   icon={({ color, size }) =>
                             (
                                 <Icon
                                     name='help'
@@ -88,7 +88,8 @@ function DrawerContent(props) {
 }
 const styles = StyleSheet.create({
     drawerContent: {
-        flex: 1
+        flex: 1,
+     //    backgroundColor:'#1c1c1c'
     },
     userInfoSection:{
         paddingLeft: 20,
@@ -97,11 +98,13 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 16,
         marginTop: 3,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        //color:'#fff'
     },
     caption: {
         fontSize: 14,
         lineHeight: 14,
+        //color:'#fff'
     },
     row: {
         marginTop: 20,
@@ -112,6 +115,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginRight: 15,
+        color:"#fff"
     },
     paragraph: {
         fontWeight: 'bold',
@@ -119,6 +123,7 @@ const styles = StyleSheet.create({
     },
     drawerSection: {
         marginTop: 15,
+        color:"#fff"
     },
    
     preference: {

@@ -4,7 +4,9 @@ import * as Localize from 'expo-localization';
 import i18n from 'i18n-js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import en from './Languages/en.json';
-import kn from './Languages/kn.json'
+import kn from './Languages/kn.json';
+import Result from './Result';
+import * as Speech from 'expo-speech'
 //import i18n from './i18n'
 
 /*const en = {
@@ -43,12 +45,15 @@ export default function Home({route, navigation}) {
     }
 
     const QueryHandler = () => {
-        setAddQuery(textinput);
-        setTextinput('');
+        navigation.navigate('Result')
     }
 
     const ClearText = () => {
         setTextinput('');
+    }
+    function speakup(){
+        var say="Please tell us your problem";
+        Speech.speak(say);
     }
 
     useEffect(() => {
@@ -149,7 +154,7 @@ export default function Home({route, navigation}) {
                         padding: 12,
                         backgroundColor: '#7979f1',
                         borderRadius: 24
-                    }}>
+                    }} onPress={speakup}>
                     <Text style={styles.textcol}>{i18n.t('speak')}</Text></TouchableOpacity>
             </View>
             <View style={styles.container}>
