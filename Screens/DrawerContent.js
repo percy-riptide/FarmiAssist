@@ -99,12 +99,12 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginTop: 3,
         fontWeight: 'bold',
-        //color:'#fff'
+        color:'#fff'
     },
     caption: {
         fontSize: 14,
         lineHeight: 14,
-        //color:'#fff'
+        color:'#fff'
     },
     row: {
         marginTop: 20,

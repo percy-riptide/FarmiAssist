@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+//import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -28,7 +28,7 @@ const AgriStackScreen = ({ navigation }) => (
     </AgriStack.Navigator>
 );
 
-const AboutStackScreen = ({ navigation }) => (
+export const AboutStackScreen = ({ navigation }) => (
     <AboutStack.Navigator screenOptions={{
         headerStyle: {
             backgroundColor: '#1f65ff',
@@ -45,7 +45,7 @@ const AboutStackScreen = ({ navigation }) => (
         }} />
     </AboutStack.Navigator>
 );
-const UseStack  = ({ navigation }) => (
+const UseStackScreen  = ({ navigation }) => (
     <UseStack.Navigator screenOptions={{
         headerStyle: {
             backgroundColor: 'black',

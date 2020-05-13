@@ -1,6 +1,7 @@
-import React, { useMemo,useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+
+import React, { useMemo,useState, createContext } from 'react';
+import { StyleSheet, View,Text } from 'react-native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import AboutUs from './Screens/AboutUs';
 import Home from './Screens/Home';
@@ -8,32 +9,41 @@ import AgriDictionary from './Screens/AgriDictionary';
 import HowToUse from './Screens/HowToUse';
 import DrawerContent from './Screens/DrawerContent';
 import { createStackNavigator } from '@react-navigation/stack';
-//import MainTabScreen from './Screens/STACKN';
+import Reset  from './Screens/Reset';
 import StackA from './Screens/StackAbout'
 import Language from './Screens/Language'
 import * as Localization from 'expo-localization'
+import {AboutStackScreen} from './Screens/STACKN'
 
-export const LocalizationContext = React.createContext();
+
 const Drawer = createDrawerNavigator();
 
-
-
+const MyTheme = {
+    dark: true,
+    colors: {
+        primary: 'rgb(0,0,0)',
+        background: 'rgb(28,28,28)',
+        card: 'rgb(28,28,28)',
+        text: 'rgb(255,255,255)'
+    }
+}
     
     
 
 export default function App() {
   
     return (
-
         
-        <NavigationContainer>
+        <NavigationContainer theme={MyTheme}>
+    
 
             <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
 
+            
 
-
-                <Drawer.Screen name='Choose Language' component={StackA} />
-               <Drawer.Screen name='Language' component={Language} />
+                <Drawer.Screen name='Choose Language' component={StackA} /> 
+                
+                <Drawer.Screen name='Language' component={Language} />  
                 <Drawer.Screen name='How To Use' component={HowToUse} />
                 <Drawer.Screen name='Agricultural Dictionary' component={AgriDictionary} />
                 <Drawer.Screen name='About' component={AboutUs} />
@@ -41,9 +51,10 @@ export default function App() {
 
             </Drawer.Navigator>
 
-
-        </NavigationContainer>
         
+ 
+        </NavigationContainer>
+    
         
     );
 }
@@ -57,3 +68,5 @@ const styles = StyleSheet.create({
     },
 });
 //export default App;
+
+

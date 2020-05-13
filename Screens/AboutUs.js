@@ -6,24 +6,47 @@ import i18n from 'i18n-js';
 import en from './Languages/en.json'
 import kn from './Languages/kn.json'
 import Home from './Home'
+//import {useNavigationState} from '@react-navigation/native'
+import { State } from 'react-native-gesture-handler';
 //import {LocalizationContext} from '../App'
 const trans={
 en: ()=>require('./Languages/en.json'),
 kn: ()=>require('./Languages/kn.json')
 }
+i18n.fallback=true
 i18n.translations={en,kn}
 console.log("A"+i18n.locale)
 
 function AboutUs({ navigation}) {
-
-        
+    console.log(i18n.locale)
+    React.useEffect(()=>{
+        const unsubscribe=navigation.addListener('focus',()=>{
+            console.log('sub'+i18n.locale)
+        });
+        return unsubscribe
+    },[navigation])
+        React.useEffect(()=>{
+            const bye=navigation.addListener('blur',()=>{
+                console.log('bye'+i18n.locale)
+            });
+            return bye;
+        },[navigation])
+        React.useEffect(()=>{
+            const stat=navigation.addListener('state',()=>{
+                console.log('state'+i18n.locale)
+            });
+            return State;
+        },[navigation])
     return (
+        
         <View style={styles.container}>
+    
             <View style={styles.header}>
                 <View >
                     <Icon.Button name="ios-menu" size={30} backgroundColor="#1c1c1c" paddingTop={30} onPress={() => navigation.openDrawer()}></Icon.Button>
                 </View>
                 <View>
+                    <Text>{i18n.locale}</Text>
                     <Text style={{ paddingTop: 35,fontSize:16, paddingHorizontal:130, fontWeight: 'bold', textAlign: 'center', color: 'white' }}>{i18n.t('about')}</Text>
                 </View>
                 </View>

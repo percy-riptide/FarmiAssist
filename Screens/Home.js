@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect, createContext } from 'react';
 import { Modal, Text, View, StyleSheet, Image, TextInput, TouchableOpacity, I18nManager } from 'react-native';
 import * as Localize from 'expo-localization';
 import i18n from 'i18n-js';
@@ -32,6 +32,7 @@ const trans={
 i18n.translations = { kn, en };
 i18n.locale = "en";
 i18n.fallbacks=true
+
 
 export default function Home({route, navigation}) {
     const [location, setLocation] = useState(null);
@@ -86,7 +87,8 @@ export default function Home({route, navigation}) {
     else{
         i18n.locale="kn"
     }
-    console.log("hi"+i18n.locale)
+    
+    //console.log("hi"+i18n.locale)
     return (
         
         <View style={styles.bg}>
@@ -99,6 +101,7 @@ export default function Home({route, navigation}) {
                 
                                 
             <View style={styles.topview}>
+                
                 <Image
                     source={require('../assets/icon.png')}
                     style={{ width: 50, height: 50 }}
