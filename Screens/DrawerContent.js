@@ -36,8 +36,26 @@ function DrawerContent(props) {
                                 />
                             )}
                             label={i18n.t('language')}
-                            onPress={() => { props.navigation.navigate('Language')}}
+                            onPress={() => { props.navigation.reset({
+                                index:0,
+                                routes: [{name: 'Language'}],
+                            })}}
                             />
+                            <DrawerItem icon={({color,size})=>
+                           (
+                               <Icon
+                               name='home'
+                               color={color}
+                               size={size}
+                               />
+                           )
+                        }
+                        label={i18n.t('home')}
+                        onPress={()=>props.navigation.navigate('Home',{val:i18n.locale})}/>
+                    
+                            
+
+                            
                             <DrawerItem icon={({ color, size }) =>
                                 (
                                     <Icon
@@ -97,7 +115,8 @@ const styles = StyleSheet.create({
     caption: {
         fontSize: 14,
         lineHeight: 14,
-        color:'#fff'
+        color:'#fff',
+        marginTop:9
     },
     row: {
         marginTop: 20,

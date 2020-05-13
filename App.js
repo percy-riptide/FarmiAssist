@@ -9,7 +9,6 @@ import AgriDictionary from './Screens/AgriDictionary';
 import HowToUse from './Screens/HowToUse';
 import DrawerContent from './Screens/DrawerContent';
 import { createStackNavigator } from '@react-navigation/stack';
-import Reset  from './Screens/Reset';
 import StackA from './Screens/StackAbout'
 import Language from './Screens/Language'
 import * as Localization from 'expo-localization'
@@ -44,6 +43,7 @@ export default function App() {
                 <Drawer.Screen name='Choose Language' component={StackA} /> 
                 
                 <Drawer.Screen name='Language' component={Language} />  
+                <Drawer.Screen name='Home' component={Home} />
                 <Drawer.Screen name='How To Use' component={HowToUse} />
                 <Drawer.Screen name='Agricultural Dictionary' component={AgriDictionary} />
                 <Drawer.Screen name='About' component={AboutUs} />

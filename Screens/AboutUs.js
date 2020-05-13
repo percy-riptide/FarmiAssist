@@ -45,22 +45,22 @@ function AboutUs({ navigation}) {
             <ScrollView style={{backgroundColor:"#1c1c1c"}}>
                 <View style={styles.container}>
                     <TouchableOpacity onPress={()=> Linking.openURL('https://www.linkedin.com/in/shreya-patil-039787191')}><Image source={require('../assets/shreya.jpg')} style={{borderRadius:50, width:100, height:100}} /></TouchableOpacity>
-                    <Text style={styles.textcol}>Shreya Patil</Text>
+                    <Text style={styles.textcol}>{i18n.t('shreya')}</Text>
                     <Text style={styles.textcol}>UI, Speech Recognition</Text>
                 </View>
                 <View style={styles.container}>
                     <TouchableOpacity onPress={()=> Linking.openURL('https://www.linkedin.com/in/jyoti-poddar-8656191a6')}><Image source={require('../assets/jyoti.jpg')} style={{borderRadius:50, width:100, height:100}} /></TouchableOpacity>
-                    <Text style={styles.textcol}>Jyoti Poddar</Text>
+                    <Text style={styles.textcol}>{i18n.t('jyoti')}</Text>
                     <Text style={styles.textcol}>Database Design, Natural Language Processing</Text>
                 </View>
                 <View style={styles.container}>
                     <TouchableOpacity onPress={()=> Linking.openURL('https://linkedin.com/in/manoj-kumar-49209a1aa')}><Image source={require('../assets/manoj.jpg')} style={{borderRadius:50, width:100, height:100}} /></TouchableOpacity>
-                    <Text style={styles.textcol}>D Manoj Kumar</Text>
+                    <Text style={styles.textcol}>{i18n.t('manoj')}</Text>
                     <Text style={styles.textcol}>Database Design, Natural Language Processing</Text>
                 </View>
                 <View style={styles.container}>
                     <TouchableOpacity onPress={()=> Linking.openURL('https://www.linkedin.com/in/pratik-p-patil-618887194')}><Image source={require('../assets/pattu.jpg')} style={{borderRadius:50, width:100, height:100}} /></TouchableOpacity>
-                    <Text style={styles.textcol}>Pratik P Patil</Text>
+                    <Text style={styles.textcol}>{i18n.t('pratik')}</Text>
                     <Text style={styles.textcol}>UI, PHP</Text>
                 </View>
             </ScrollView>

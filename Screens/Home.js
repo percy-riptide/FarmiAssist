@@ -6,7 +6,9 @@ import en from './Languages/en.json';
 import kn from './Languages/kn.json';
 import Result from './Result';
 import * as Speech from 'expo-speech';
-
+import {Audio} from 'expo-av'
+import {Asset} from 'expo-asset'
+import * as Localize from 'expo-localization'
 const trans={
     en: ()=>require('./Languages/en.json'),
     kn: ()=>require('./Languages/kn.json')
@@ -30,9 +32,23 @@ export default function Home({route, navigation}) {
     const ClearText = () => {
         setTextinput('');
     }
-    function speakup(){
-        var say="Please tell us your problem";
-        Speech.speak(say);
+    const soundObject = new Audio.Sound();
+    const speakup = async()=>{
+        if(i18n.locale == 'en')
+        {
+            var speech = "Please tell us your problem"
+            Speech.speak(speech)
+        }
+        else
+        {
+        try{
+            await soundObject.loadAsync(require('../assets/Speech/hello.mp3'));
+            await soundObject.playAsync();
+        }
+        catch(error){
+            console.log('error')
+        }
+    }
     }
 
     const {val}=route.params
@@ -59,7 +75,7 @@ export default function Home({route, navigation}) {
                 
                 <Image
                     source={require('../assets/icon.png')}
-                    style={{ width: 50, height: 50 }}
+                    style={{ width: 70, height: 70,marginBottom:10 }}
                 />
                 <View style={styles.container}><Text style={styles.textcol}>{i18n.t('hello')}</Text></View>
             </View>
@@ -106,13 +122,14 @@ export default function Home({route, navigation}) {
                 </View>
             </View>
             <View style={styles.container}>
+            <Icon.Button name="ios-volume-high" size={45} backgroundColor='#1c1c1c' paddingTop={30} onPress={speakup}></Icon.Button>
                 <TouchableOpacity
                     style={{
                         alignItems: 'center',
                         padding: 12,
                         backgroundColor: '#7979f1',
                         borderRadius: 24
-                    }} onPress={speakup}>
+                    }}>
                     <Text style={{color:'#ffffff', alignItems:'center', justifyContent:'center', fontSize:18}}>{i18n.t('speak')}</Text></TouchableOpacity>
             </View>
         </View>
