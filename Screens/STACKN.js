@@ -1,21 +1,15 @@
 import React from 'react';
-
-//import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-
 import Icon from 'react-native-vector-icons/Ionicons';
-
 import Home from './Home';
 import AboutUs from './AboutUs';
 import HowToUse from './HowToUse';
 import AgriDictionary from './AgriDictionary';
 
-
 const HomeStack = createStackNavigator();
 const AboutStack = createStackNavigator();
 const UseStack = createStackNavigator();
 const AgriStack = createStackNavigator();
-      
 
 const HomeStackScreen = ({ navigation }) => (
     <HomeStack.Navigator>

@@ -1,125 +1,91 @@
 import React,{useContext} from 'react';
-import { View, Text, StyleSheet, StatusBar, Image, Linking, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, Image, Linking, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import * as Localize from 'expo-localization';
 import i18n from 'i18n-js';
-import en from './Languages/en.json'
-import kn from './Languages/kn.json'
-import Home from './Home'
-//import {useNavigationState} from '@react-navigation/native'
+import en from './Languages/en.json';
+import kn from './Languages/kn.json';
+import Home from './Home';
 import { State } from 'react-native-gesture-handler';
-//import {LocalizationContext} from '../App'
 const trans={
 en: ()=>require('./Languages/en.json'),
 kn: ()=>require('./Languages/kn.json')
 }
-i18n.fallback=true
-i18n.translations={en,kn}
-console.log("A"+i18n.locale)
+i18n.fallback=true;
+i18n.translations={en,kn};
 
 function AboutUs({ navigation}) {
-    console.log(i18n.locale)
-    React.useEffect(()=>{
-        const unsubscribe=navigation.addListener('focus',()=>{
-            console.log('sub'+i18n.locale)
-        });
-        return unsubscribe
-    },[navigation])
-        React.useEffect(()=>{
-            const bye=navigation.addListener('blur',()=>{
-                console.log('bye'+i18n.locale)
-            });
-            return bye;
-        },[navigation])
-        React.useEffect(()=>{
-            const stat=navigation.addListener('state',()=>{
-                console.log('state'+i18n.locale)
-            });
-            return State;
-        },[navigation])
     return (
-        
-        <View style={styles.container}>
-    
+        <View style={{backgroundColor: '#1c1c1c',flex:1}}>
             <View style={styles.header}>
-                <View >
+                <View>
                     <Icon.Button name="ios-menu" size={30} backgroundColor="#1c1c1c" paddingTop={30} onPress={() => navigation.openDrawer()}></Icon.Button>
                 </View>
                 <View>
-                    <Text>{i18n.locale}</Text>
-                    <Text style={{ paddingTop: 35,fontSize:16, paddingHorizontal:130, fontWeight: 'bold', textAlign: 'center', color: 'white' }}>{i18n.t('about')}</Text>
-                </View>
-                </View>
-            <View style={styles.Main}>
-                <Image source={require('../assets/icon.png')} style={{ width: 70, height: 70, paddingTop: 15 }} />
-    <Text style={{ color: '#F5F5F5', fontWeight: 'bolder',fontSize:16, marginTop: 6 }}>{i18n.t('appname')}</Text>
-    <Text style={{ color: '#F5F5F5', marginTop: 6 }}>{i18n.t('version')}</Text>
-                
-    <Text style={{ marginTop: 6, color: '#E9E6E5', fontWeight: 'lighter'}}>{i18n.t('caption')}</Text>  
-                <View style={{ flexDirection: 'row', justifyContent: 'center' }}> 
-                <Image source={require('../assets/git.png')} style={{width:15,height:15,marginTop:8,marginLeft:25}}/>
-                <TouchableOpacity onPress={() => { Linking.openURL("https://github.com/Percy-Riptide/FarmiAssist.git"); }}>
-    <Text style={{color:'#E9172D',marginTop:6}}>{i18n.t('git')}</Text>
-                </TouchableOpacity>
+                    <Text style={{paddingTop: 34, fontSize: 16, paddingHorizontal: 5, color: 'white'}}>{i18n.t('about')}</Text>
                 </View>
             </View>
-            <View style={styles.Body}>
-                <View style={{ justifyContent:'center',alignItems:'center' }}>
-    <Text style={{ color: '#fff', fontSize: 20, paddingTop: 10 }}>{i18n.t('developer')}</Text>
+            <View style={{padding: 20,
+        backgroundColor: '#1c1c1c',
+        alignItems: 'center',
+        justifyContent:'center', flex:8}}>
+                <Image source={require('../assets/icon.png')} style={{ width: 50, height: 50}}/>
+                <Text style={styles.textcol}>{i18n.t('appname')}</Text>
+                <Text style={styles.textcol}>{i18n.t('caption')}</Text>
+                <Text style={styles.textcol}>V1.0</Text>
+                <View style={{width:180}}><TouchableOpacity onPress={()=>{Linking.openURL('https://www.github.com/percy-riptide/FarmiAssist')}} style={{
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: 10,
+                            backgroundColor: '#c28729',
+                            borderRadius: 24
+                        }}><Text style={styles.textcol}>{i18n.t('git')}</Text></TouchableOpacity></View>
+                        <Text style={{fontSize: 24, color:'#ffffff', padding: 20,textAlign:'center'}}>{i18n.t('developer')}</Text>
+            </View>
+            <View style={{backgroundColor:"#1c1c1c",flex:15}}>
+            <ScrollView style={{backgroundColor:"#1c1c1c"}}>
+                <View style={styles.container}>
+                    <TouchableOpacity onPress={()=> Linking.openURL('https://www.linkedin.com/in/shreya-patil-039787191')}><Image source={require('../assets/shreya.jpg')} style={{borderRadius:50, width:100, height:100}} /></TouchableOpacity>
+                    <Text style={styles.textcol}>Shreya Patil</Text>
+                    <Text style={styles.textcol}>UI, Speech Recognition</Text>
                 </View>
-                <View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                    <View>
-                        <Image source={require('../assets/pattu.jpg')} style={{width:140,height:140,marginTop:20}} />
-    <Text style={{color:'#fff',fontSize:14}}>{i18n.t('pratik')}</Text>
-                    </View>
-                        
-                    <View>
-                        <Image source={require('../assets/manoj.jpg')} style={{width:140,height:140,marginTop:20}}/>
-    <Text style={{color: '#fff',fontSize:14}}>{i18n.t('manoj')}</Text>
-                        </View>
-                      </View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                        <View>
-                            <Image source={require('../assets/shreya.jpg')} style={{ width: 140, height: 140, marginTop: 20 }} />
-    <Text style={{ color: '#fff', fontSize: 14 }}>{i18n.t('shreya')}</Text>
-                        </View>
-
-                        <View>
-                            <Image source={require('../assets/jyoti.jpg')} style={{ width: 140, height: 140, marginTop: 20 }} />
-    <Text style={{ color: '#fff', fontSize: 14 }}>{i18n.t('jyoti')}</Text>
-                        </View>
-                    </View>
+                <View style={styles.container}>
+                    <TouchableOpacity onPress={()=> Linking.openURL('https://www.linkedin.com/in/jyoti-poddar-8656191a6')}><Image source={require('../assets/jyoti.jpg')} style={{borderRadius:50, width:100, height:100}} /></TouchableOpacity>
+                    <Text style={styles.textcol}>Jyoti Poddar</Text>
+                    <Text style={styles.textcol}>Database Design, Natural Language Processing</Text>
                 </View>
-
-             </View>
+                <View style={styles.container}>
+                    <TouchableOpacity onPress={()=> Linking.openURL('https://linkedin.com/in/manoj-kumar-49209a1aa')}><Image source={require('../assets/manoj.jpg')} style={{borderRadius:50, width:100, height:100}} /></TouchableOpacity>
+                    <Text style={styles.textcol}>D Manoj Kumar</Text>
+                    <Text style={styles.textcol}>Database Design, Natural Language Processing</Text>
+                </View>
+                <View style={styles.container}>
+                    <TouchableOpacity onPress={()=> Linking.openURL('https://www.linkedin.com/in/pratik-p-patil-618887194')}><Image source={require('../assets/pattu.jpg')} style={{borderRadius:50, width:100, height:100}} /></TouchableOpacity>
+                    <Text style={styles.textcol}>Pratik P Patil</Text>
+                    <Text style={styles.textcol}>UI, PHP</Text>
+                </View>
+            </ScrollView>
+            </View>
         </View>
     )
 }
+
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor:'#1c1c1c'
-
+        padding: 20,
+        backgroundColor: '#1c1c1c',
+        alignItems: 'center',
+        justifyContent:'center'
     },
     header: {
         flexDirection:'row',
         alignItems:'stretch',
-        flex: 1
-      //  borderBottomWidth: 1,
-      //  borderBottomColor: 'black',
-
+        flex: 2
     },
-    Main: {
-        flex: 4,
-        justifyContent: 'center',
-        alignItems:'center',
-       borderBottomWidth: 1,
-       borderBottomColor: '#7b7676',
-    
-    },
-    Body: {
-        flex: 6,
+    textcol: {
+        color: '#ffffff',
+        fontSize: 18,
+        textAlign:'center',
+        padding: 5,
     }
 })
 export default AboutUs;

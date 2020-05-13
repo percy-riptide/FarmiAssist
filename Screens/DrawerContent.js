@@ -3,7 +3,6 @@ import { View, StyleSheet,Image } from 'react-native';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { useTheme,Avatar, Title, Caption, Paragraph, Drawer, Text, TouchableRipple } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import * as Localize from 'expo-localization';
 import i18n from 'i18n-js';
 import en from './Languages/en.json';
 import kn from './Languages/kn.json'
@@ -12,11 +11,7 @@ const trans={
     en: ()=>require('./Languages/en.json'),
     kn: ()=>require('./Languages/kn.json')
 }
-
 i18n.translations = { kn, en };
-
-
-//i18n.locale = "kn";
 
 function DrawerContent(props) {
     return (
@@ -25,11 +20,10 @@ function DrawerContent(props) {
                 <View style={styles.drawerContent}>
                     <View style={styles.userInfoSection}>
                         <View style={{ flexDirection: 'row', marginTop: 15, justifyContent:'center' }}>
-                            <Image source={require('../assets/icon.png')} style={{ width: 60, height: 60}} />
+                            <Image source={require('../assets/icon.png')} style={{ width: 50, height: 50}} />
                         </View>
-                        <View style={{flexDirection:'column', alignItems:'center'}}>
-                            <Title style={styles.title}>{i18n.t('appname')}</Title>
-    <Caption style={styles.caption}>{i18n.t('caption')}</Caption>
+                        <View style={{flexDirection:'column', alignItems:'center', paddingTop:10}}>
+                            <Caption style={styles.caption}>{i18n.t('caption')}</Caption>
                         </View>
                     </View>
                     <Drawer.Section style='styles.drawerSection'>
@@ -44,14 +38,14 @@ function DrawerContent(props) {
                             label={i18n.t('language')}
                             onPress={() => { props.navigation.navigate('Language')}}
                             />
-                        <DrawerItem   icon={({ color, size }) =>
-                            (
-                                <Icon
-                                    name='help'
-                                    color={color}
-                                    size={size}
-                                />
-                            )}
+                            <DrawerItem icon={({ color, size }) =>
+                                (
+                                    <Icon
+                                        name='help'
+                                        color={color}
+                                        size={size}
+                                    />
+                                )}
                                 label={i18n.t('use')}
                                 onPress={() => {props.navigation.navigate('How To Use') }}
                         />
@@ -88,8 +82,7 @@ function DrawerContent(props) {
 }
 const styles = StyleSheet.create({
     drawerContent: {
-        flex: 1,
-     //    backgroundColor:'#1c1c1c'
+        flex: 1
     },
     userInfoSection:{
         paddingLeft: 20,
@@ -119,20 +112,17 @@ const styles = StyleSheet.create({
     },
     paragraph: {
         fontWeight: 'bold',
-        marginRight: 3,
+        marginRight: 3
     },
     drawerSection: {
         marginTop: 15,
         color:"#fff"
     },
-   
     preference: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingVertical: 12,
         paddingHorizontal: 16
-    },
-
-    
+    }  
 })
 export default DrawerContent;
