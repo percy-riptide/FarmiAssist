@@ -26,6 +26,22 @@ export default function Home({route, navigation}) {
     }
 
     const QueryHandler = () => {
+        fetch('http://192.168.0.104/farmiassist/main.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                string: textinput
+            })
+        })
+        .then((response) => response.json())
+        .then((responseData) => {
+            console.log("inside responsejson");
+            console.log('response object:',responseData)
+        })
+        .done();
         navigation.navigate('Result');
     }
 
