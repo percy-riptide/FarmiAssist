@@ -1,22 +1,18 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text,Alert } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons'
-import {Audio} from 'expo-av'
-import {Asset} from 'expo-asset'
+import Icon from 'react-native-vector-icons/Ionicons';
+import {Audio} from 'expo-av';
+
 export default function Language({navigation}) {
      function languageHandler(){
         Alert.alert('Message','Application will be re rendered on change of language or restart the application to change the language',[
-            {text:'Understood',onPress:()=>console.log('Yes')}])
-            
+            {text:'Understood',onPress:()=> {}}])
             navigation.navigate('Home',{"val":"en"})
-
      }
      function languageHandler1(){Alert.alert('ಸಂದೇಶ ',' ಭಾಷೆಯ ಬದಲಾವಣೆಯ ಮೇಲೆ ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಪ್ರದರ್ಶಿಸಲಾಗುತ್ತದೆ ಅಥವಾ ಭಾಷೆಯನ್ನು ಬದಲಾಯಿಸಲು ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಮರುಪ್ರಾರಂಭಿಸಿ ',[
-        {text:'ಅರ್ಥವಾಯಿತು' ,onPress:()=>console.log('Yes')}])
-        
+        {text:'ಅರ್ಥವಾಯಿತು' ,onPress:()=>{}}])
          navigation.navigate('Home',{val:'ka'})
      }
-
      const soundObject = new Audio.Sound();
     const Message = async()=>{
         try{
@@ -24,11 +20,9 @@ export default function Language({navigation}) {
             await soundObject.playAsync();
         }
         catch(error){
-            console.log('error')
+
         }
     }
-    
-
   return (
       <View style={{flex:1,flexDirection:'column',justifyContent:"center",alignItems:'center'}}>
     <View style={styles.container}>

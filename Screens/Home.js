@@ -1,14 +1,12 @@
-﻿import React, { useState, useEffect, createContext } from 'react';
-import { Modal, Text, View, StyleSheet, Image, TextInput, TouchableOpacity, I18nManager } from 'react-native';
+﻿import React, { useState } from 'react';
+import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity, Alert } from 'react-native';
 import i18n from 'i18n-js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import en from './Languages/en.json';
 import kn from './Languages/kn.json';
-import Result from './Result';
 import * as Speech from 'expo-speech';
-import {Audio} from 'expo-av'
-import {Asset} from 'expo-asset'
-import * as Localize from 'expo-localization'
+import {Audio} from 'expo-av';
+
 const trans={
     en: ()=>require('./Languages/en.json'),
     kn: ()=>require('./Languages/kn.json')
@@ -24,25 +22,49 @@ export default function Home({route, navigation}) {
     const InputTextHandler = (textinput) => {
         setTextinput(textinput);
     }
-
+    const {val}=route.params;
     const QueryHandler = () => {
-        fetch('http://192.168.0.104/farmiassist/main.php', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                string: textinput
+        if(textinput == ''){
+            if(val == 'en'){
+                Alert.alert(
+                    'Query Empty',
+                    'Please Enter a Query to continue',
+                    [
+                    { text: 'OK', onPress: () => {}},
+                    ],
+                    { cancelable: false }
+                );
+            }
+            else{
+                Alert.alert(
+                    'ಪ್ರಶ್ನೆ ಖಾಲಿಯಾಗಿದೆ',
+                    'ಮುಂದುವರಿಸಲು ದಯವಿಟ್ಟು ಪ್ರಶ್ನೆಯನ್ನು ನಮೂದಿಸಿ',
+                    [
+                    { text: 'ಸರಿ', onPress: () => {}},
+                    ],
+                    { cancelable: false }
+                ); 
+            }
+        }
+        else {
+            fetch('http://192.168.43.112/farmiassist/main.php', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    string: textinput
+                })
             })
-        })
-        .then((response) => response.json())
-        .then((responseData) => {
-            console.log("inside responsejson");
-            console.log('response object:',responseData)
-        })
-        .done();
-        navigation.navigate('Result');
+            .then((response) => response.json())
+            .then((responseData) => {
+                console.log('response object:',responseData)
+            })
+            .done();
+            setTextinput('');
+            navigation.navigate('Result');
+        }
     }
 
     const ClearText = () => {
@@ -62,12 +84,11 @@ export default function Home({route, navigation}) {
             await soundObject.playAsync();
         }
         catch(error){
-            console.log('error')
+            console.log('error');
         }
     }
     }
 
-    const {val}=route.params
     if(val=='en')
     {
         i18n.locale="en";
@@ -95,9 +116,6 @@ export default function Home({route, navigation}) {
                 />
                 <View style={styles.container}><Text style={styles.textcol}>{i18n.t('hello')}</Text></View>
             </View>
-            <View style={{justifyContent:'center',alignItems:'center'}}>
-            <Text style={{color:'#ffffff', alignItems:'center', justifyContent:'center', fontSize:16}}>{i18n.t('problem')}</Text>
-           </View>
             <View
                 style={{
                     backgroundColor: 'rgba(195, 195, 162,0.2)',
@@ -108,7 +126,7 @@ export default function Home({route, navigation}) {
                 <TextInput
                     multiline
                     numberOfLines={2}
-                    placeholder="......."
+                    placeholder={i18n.t('problem')}
                     keyboardAppearance="dark"
                     style={{ width: '95%', color: '#ffffff', padding: 15, fontSize: 20 }}
                     onChangeText={InputTextHandler} value={textinput}

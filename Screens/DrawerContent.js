@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet,Image } from 'react-native';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
-import { useTheme,Avatar, Title, Caption, Paragraph, Drawer, Text, TouchableRipple } from 'react-native-paper';
+import { Caption, Drawer } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import i18n from 'i18n-js';
 import en from './Languages/en.json';

@@ -1,11 +1,10 @@
-import React,{useContext} from 'react';
-import { View, Text, StyleSheet, StatusBar, Image, Linking, TouchableOpacity, ScrollView } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Image, Linking, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import i18n from 'i18n-js';
 import en from './Languages/en.json';
 import kn from './Languages/kn.json';
-import Home from './Home';
-import { State } from 'react-native-gesture-handler';
+
 const trans={
 en: ()=>require('./Languages/en.json'),
 kn: ()=>require('./Languages/kn.json')
@@ -59,7 +58,7 @@ function AboutUs({ navigation}) {
                     <Text style={styles.textcol}>Database Design, Natural Language Processing</Text>
                 </View>
                 <View style={styles.container}>
-                    <TouchableOpacity onPress={()=> Linking.openURL('https://www.linkedin.com/in/pratik-p-patil-618887194')}><Image source={require('../assets/pattu.jpg')} style={{borderRadius:50, width:100, height:100}} /></TouchableOpacity>
+                    <TouchableOpacity onPress={()=> Linking.openURL('https://www.linkedin.com/in/pratik-p-patil-618887194')}><Image source={require('../assets/pratik.jpg')} style={{borderRadius:50, width:100, height:100}} /></TouchableOpacity>
                     <Text style={styles.textcol}>{i18n.t('pratik')}</Text>
                     <Text style={styles.textcol}>UI, PHP</Text>
                 </View>

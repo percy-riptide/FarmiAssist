@@ -1,10 +1,8 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {NavigationContainer} from '@react-navigation/native';
 import Language from './Language';
 import Home from './Home';
 import Result from './Result';
-import i18n from 'i18n-js';
 
 const StackHome=createStackNavigator()
 
