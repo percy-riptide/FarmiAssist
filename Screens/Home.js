@@ -6,6 +6,7 @@ import en from './Languages/en.json';
 import kn from './Languages/kn.json';
 import * as Speech from 'expo-speech';
 import {Audio} from 'expo-av';
+import { Asset } from 'expo-asset';
 
 const trans={
     en: ()=>require('./Languages/en.json'),

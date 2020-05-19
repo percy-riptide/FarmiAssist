@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text,Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Audio} from 'expo-av';
+import { Asset } from 'expo-asset';
 
 export default function Language({navigation}) {
      function languageHandler(){
