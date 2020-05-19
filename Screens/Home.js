@@ -24,6 +24,7 @@ export default function Home({route, navigation}) {
         setTextinput(textinput);
     }
     const {val}=route.params;
+    var out
     const QueryHandler = () => {
         if(textinput == ''){
             if(val == 'en'){
@@ -48,7 +49,7 @@ export default function Home({route, navigation}) {
             }
         }
         else {
-            fetch('http://192.168.43.112/farmiassist/main.php', {
+            fetch('http://192.168.43.249/farmiassist/main.php', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -61,10 +62,14 @@ export default function Home({route, navigation}) {
             .then((response) => response.json())
             .then((responseData) => {
                 console.log('response object:',responseData)
+                len = Object.keys(responseData).length
+                console.log(len)
+                setTextinput('');
+                navigation.navigate('Result',{"val":responseData,"val1":len})
             })
             .done();
-            setTextinput('');
-            navigation.navigate('Result');
+          //  setTextinput('');
+           // navigation.navigate('Result',{"val":out});
         }
     }
 

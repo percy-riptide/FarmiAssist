@@ -30,7 +30,7 @@ function DrawerContent(props) {
                         <DrawerItem icon={({ color, size }) =>
                             (
                                 <Icon
-                                    name='home'
+                                    name='settings-box'
                                     color={color}
                                     size={size}
                                 />
