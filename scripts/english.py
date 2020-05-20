@@ -1,7 +1,7 @@
-from textblob import TextBlob
+from googletrans import Translator
+translator = Translator()
 f=open('english.txt','r')
-word10 = TextBlob(f.read())  
-x=word10.translate(from_lang='en', to ='kn')
-#f=open("translated.txt","w")
-print(x)
-#f.close()
+content = f.read()
+result = translator.translate(content, dest='kn')
+with open('translated.txt',"w",encoding="utf8") as f1:
+    f1.write(result.text)

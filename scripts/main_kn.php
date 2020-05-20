@@ -28,54 +28,117 @@
 	$output7=shell_exec('python yield.py "'.$var.'"');
 	$output7 = trim($output7);
 	ob_start();
-    	if($output1 != "")
-		echo 'Crop '.'Here Are Yours Results for the Crop:'.$output1."\r\n";
+	echo '{ ';
+    	if($output1 != ""){
+		echo '"'.'Crop'.'"'.': ';
+		echo '"';
+		$tr='Here are the results for your plant:     '.$output1;
+		file_put_contents("english.txt","");
+		file_put_contents("translated.txt","");
+		file_put_contents("english.txt",$tr);
+		$op=shell_exec('python english.py');
+		$op=file_get_contents("translated.txt");
+		echo $op.'"'.','."\r\n";
+	}
     	if($output2 == "true"){
 		$sql='select * from input where crop="'.$output1.'"';
 		$result = mysqli_query($conn, $sql);
-		echo 'Requirement ';
+		echo '"'.'Requirement'.'"'.': ';
+		echo '"';
 		if(mysqli_num_rows($result)>0)
-			while($row = mysqli_fetch_assoc($result))
-				echo $row["input"]."\r\n";}
+			while($row = mysqli_fetch_assoc($result)){
+				$tr=$row["input"];
+				file_put_contents("english.txt","");
+				file_put_contents("translated.txt","");
+				file_put_contents("english.txt",$tr);
+				$op=shell_exec('python english.py');
+				$op=file_get_contents("translated.txt");
+				echo $op.'"'.','."\r\n";
+			}
+	}
     	if($output3 == "true"){
 		$sql='select * from fertilizers where crop="'.$output1.'"';
 		$result = mysqli_query($conn, $sql);
-		echo 'Fertilizer ';
+		echo '"'.'Fertilizer'.'"'.': ';
+		echo '"';
 		if(mysqli_num_rows($result)>0)
-			while($row = mysqli_fetch_assoc($result))
-				echo $row["fertilizers"]."\r\n";}
+			while($row = mysqli_fetch_assoc($result)){
+				$tr=$row["fertilizers"];
+				file_put_contents("english.txt","");
+				file_put_contents("translated.txt","");
+				file_put_contents("english.txt",$tr);
+				$op=shell_exec('python english.py');
+				$op=file_get_contents("translated.txt");
+				echo $op.'"'.','."\r\n";
+			}
+	}
     	if($output4 == "true"){
 		$sql='select * from season where crop="'.$output1.'"';
 		$result = mysqli_query($conn, $sql);
-		echo 'Season ';
+		echo '"'.'Season'.'"'.': ';
+		echo '"';
 		if(mysqli_num_rows($result)>0)
-			while($row = mysqli_fetch_assoc($result))
-				echo $row["season"]."\r\n";}
+			while($row = mysqli_fetch_assoc($result)){
+				$tr=$row["season"];
+				file_put_contents("english.txt","");
+				file_put_contents("translated.txt","");
+				file_put_contents("english.txt",$tr);
+				$op=shell_exec('python english.py');
+				$op=file_get_contents("translated.txt");
+				echo $op.'"'.','."\r\n";
+			}
+	}
     	if($output5 == "true"){
 		$sql='select * from soil where crop="'.$output1.'"';
 		$result = mysqli_query($conn, $sql);
-		echo 'Soil ';
+		echo '"'.'Soil'.'"'.': ';
+		echo '"';
 		if(mysqli_num_rows($result)>0)
-			while($row = mysqli_fetch_assoc($result))
-				echo $row["soil"]."\r\n";}
+			while($row = mysqli_fetch_assoc($result)){
+				$tr=$row["soil"];
+				file_put_contents("english.txt","");
+				file_put_contents("translated.txt","");
+				file_put_contents("english.txt",$tr);
+				$op=shell_exec('python english.py');
+				$op=file_get_contents("translated.txt");
+				echo $op.'"'.','."\r\n";
+			}
+	}
     	if($output6 == "true"){
 		$sql='select * from weed where crop="'.$output1.'"';
 		$result = mysqli_query($conn, $sql);
-		echo 'Weeds ';
+		echo '"'.'Weed'.'"'.': ';
+		echo '"';
 		if(mysqli_num_rows($result)>0)
-			while($row = mysqli_fetch_assoc($result))
-				echo $row["weedcontrol"]."\r\n";}
+			while($row = mysqli_fetch_assoc($result)){
+				$tr=$row["weedcontrol"];
+				file_put_contents("english.txt","");
+				file_put_contents("translated.txt","");
+				file_put_contents("english.txt",$tr);
+				$op=shell_exec('python english.py');
+				$op=file_get_contents("translated.txt");
+				echo $op.'"'.','."\r\n";
+			}
+	}
     	if($output7 == "true"){
 		$sql='select * from yield where crop="'.$output1.'"';
 		$result = mysqli_query($conn, $sql);
-		echo 'Produce ';
+		echo '"'.'Produce'.'"'.': ';
+		echo '"';
 		if(mysqli_num_rows($result)>0)
-			while($row = mysqli_fetch_assoc($result))
-				echo $row["yield"]."\r\n";}
+			while($row = mysqli_fetch_assoc($result)){
+				$tr=$row["yield"];
+				file_put_contents("english.txt","");
+				file_put_contents("translated.txt","");
+				file_put_contents("english.txt",$tr);
+				$op=shell_exec('python english.py');
+				$op=file_get_contents("translated.txt");
+				echo $op.'"'.','."\r\n";
+			}
+	}
+	echo '}';
 	$final=ob_get_clean();
-	file_put_contents("stringdata.txt",trim($final));
+	file_put_contents("final.json",trim($final));
 	$conn->close();
-	file_put_contents("final.json","");
-	shell_exec('python stringtojsondict.py');
 	echo file_get_contents("final.json");
 ?>
