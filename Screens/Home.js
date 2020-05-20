@@ -38,7 +38,7 @@ export default function Home({route, navigation}) {
                 );
             }
             else {
-                fetch('http://192.168.0.110/farmiassist/main.php', {
+                fetch('http://192.168.43.249/farmiassist/main.php', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -69,7 +69,7 @@ export default function Home({route, navigation}) {
                 );
             }
             else {
-                fetch('http://192.168.0.110/farmiassist/main_kn.php', {
+                fetch('http://192.168.43.249/farmiassist/main_kn.php', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',

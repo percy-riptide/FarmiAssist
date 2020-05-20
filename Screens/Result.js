@@ -25,10 +25,10 @@ import { ScrollView } from 'react-native-gesture-handler';
         <View>
             <ScrollView>
              <FlatList data={arr}
-             renderItem={({item})=><TouchableOpacity keyboardAppearance = "dark" onPress={async()=>{Speech.speak(item.out)}}><Text style={{borderRadius:24,width: '95%', color: '#ffffff', padding: 15, fontSize: 20 ,borderWidth:1,margin:5}}>{item.out}</Text></TouchableOpacity>} />
+             renderItem={({item})=><TouchableOpacity keyboardAppearance = "dark" onPress={async()=>{Speech.stop(),Speech.speak(item.out)}}><Text style={{borderRadius:24,width: '95%', color: '#ffffff', padding: 15, fontSize: 20 ,borderWidth:1,margin:5}}>{item.out}</Text></TouchableOpacity>} />
               <TouchableOpacity
                        
-                       onPress = {()=>{navigation.navigate('Home',{"val":i18n.locale})}} 
+                       onPress = {()=>{Speech.stop(),navigation.navigate('Home',{"val":i18n.locale})}} 
                         style={{
                             alignItems: 'center',
                             padding: 10,
