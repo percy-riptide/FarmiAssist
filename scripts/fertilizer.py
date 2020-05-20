@@ -1,33 +1,20 @@
-from nltk.tokenize import sent_tokenize, word_tokenize 
-from nltk.corpus import stopwords
-import pdb
-import sys
-x=sys.argv[1] 
-stop_words = set(stopwords.words('english')) 
-word_tokens = word_tokenize(x) 
-filtered_sentence = [w for w in word_tokens if not w in stop_words] 
-  
-filtered_sentence = [] 
-  
-for w in word_tokens: 
-    if w not in stop_words: 
-        filtered_sentence.append(w)
+import main
 
-if 'fertilizer' in filtered_sentence:
+if 'fertilizer' in main.filtered_sentence:
     print('true')
-elif 'fertilizers' in filtered_sentence:
+elif 'fertilizers' in main.filtered_sentence:
     print('true')
-elif 'Fertilizer' in filtered_sentence:
+elif 'Fertilizer' in main.filtered_sentence:
     print('true')
-elif 'Fertilizers' in filtered_sentence:
+elif 'Fertilizers' in main.filtered_sentence:
     print('true')
-elif 'fertiliser' in filtered_sentence:
+elif 'fertiliser' in main.filtered_sentence:
     print('true')
-elif 'fertilisers' in filtered_sentence:
+elif 'fertilisers' in main.filtered_sentence:
     print('true')
-elif 'Fertiliser' in filtered_sentence:
+elif 'Fertiliser' in main.filtered_sentence:
     print('true')
-elif 'Fertilisers' in filtered_sentence:
+elif 'Fertilisers' in main.filtered_sentence:
     print('true')
 else:
     print('null')
