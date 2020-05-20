@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text,Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Audio} from 'expo-av';
-import { Asset } from 'expo-asset';
+import * as Speech from 'expo-speech';
 
 export default function Language({navigation}) {
      function languageHandler(){
@@ -14,16 +13,17 @@ export default function Language({navigation}) {
         {text:'ಅರ್ಥವಾಯಿತು' ,onPress:()=>{}}])
          navigation.navigate('Home',{val:'ka'})
      }
-     const soundObject = new Audio.Sound();
-    const Message = async()=>{
-        try{
-            await soundObject.loadAsync(require('../assets/Speech/language.mp3'));
-            await soundObject.playAsync();
-        }
-        catch(error){
+     const speakup = async()=>{
+      
+          var speech = "Please choose the language of your interest either english or kannada."
+         Speech.speak(speech)
+         speak()
+          
+      }
+      const speak = async()=>{
+        Speech.speak('ದಯವಿಟ್ಟು ನಿಮ್ಮ ಆಸಕ್ತಿಯ ಭಾಷೆಯನ್ನು ಕನ್ನಡ ಅಥವಾ ಇಂಗ್ಲಿಷ್ ಆಯ್ಕೆಮಾಡಿ')
+      }
 
-        }
-    }
   return (
       <View style={{flex:1,flexDirection:'column',justifyContent:"center",alignItems:'center'}}>
     <View style={styles.container}>
@@ -50,7 +50,7 @@ export default function Language({navigation}) {
 
                      </View>
                 </View>
-                     <Icon.Button name='ios-volume-high' size={45} backgroundColor="#1c1c1c" onPress={Message} />
+                     <Icon.Button name='ios-volume-high' size={45} backgroundColor="#1c1c1c" onPress={speakup} />
                         
                  
            </View>
