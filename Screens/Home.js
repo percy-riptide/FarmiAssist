@@ -98,17 +98,12 @@ export default function Home({route, navigation}) {
         if(i18n.locale == 'en')
         {
             var speech = "Please tell us your problem"
-            Speech.speak(speech)
+           Speech.speak(speech)
+            
         }
         else
         {
-        try{
-            await soundObject.loadAsync(require('../assets/Speech/hello.mp3'));
-            await soundObject.playAsync();
-        }
-        catch(error){
-            console.log('error');
-        }
+         Speech.speak('ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಮಸ್ಯೆಯನ್ನು ನಮಗೆ ತಿಳಿಸಿ')
     }
     }
 
