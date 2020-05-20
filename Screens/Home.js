@@ -26,8 +26,8 @@ export default function Home({route, navigation}) {
     const {val}=route.params;
     var out
     const QueryHandler = () => {
-        if(textinput == ''){
-            if(val == 'en'){
+        if(val == 'en'){
+            if(textinput == ''){
                 Alert.alert(
                     'Query Empty',
                     'Please Enter a Query to continue',
@@ -37,7 +37,28 @@ export default function Home({route, navigation}) {
                     { cancelable: false }
                 );
             }
-            else{
+            else {
+                fetch('http://192.168.0.110/farmiassist/main.php', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        string: textinput
+                    })
+                })
+                .then((response) => response.json())
+                .then((responseData) => {
+                    let len = Object.keys(responseData).length
+                    setTextinput('');
+                    navigation.navigate('Result',{"val":responseData,"val1":len})
+                })
+                .done();
+            }
+        }
+        else{
+            if(textinput == ''){
                 Alert.alert(
                     'ಪ್ರಶ್ನೆ ಖಾಲಿಯಾಗಿದೆ',
                     'ಮುಂದುವರಿಸಲು ದಯವಿಟ್ಟು ಪ್ರಶ್ನೆಯನ್ನು ನಮೂದಿಸಿ',
@@ -45,31 +66,27 @@ export default function Home({route, navigation}) {
                     { text: 'ಸರಿ', onPress: () => {}},
                     ],
                     { cancelable: false }
-                ); 
+                );
             }
-        }
-        else {
-            fetch('http://192.168.43.249/farmiassist/main.php', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    string: textinput
+            else {
+                fetch('http://192.168.0.110/farmiassist/main_kn.php', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        string: textinput
+                    })
                 })
-            })
-            .then((response) => response.json())
-            .then((responseData) => {
-                console.log('response object:',responseData)
-                len = Object.keys(responseData).length
-                console.log(len)
-                setTextinput('');
-                navigation.navigate('Result',{"val":responseData,"val1":len})
-            })
-            .done();
-          //  setTextinput('');
-           // navigation.navigate('Result',{"val":out});
+                .then((response) => response.json())
+                .then((responseData) => {
+                    let len = Object.keys(responseData).length
+                    setTextinput('');
+                    navigation.navigate('Result',{"val":responseData,"val1":len})
+                })
+                .done();
+            }
         }
     }
 
