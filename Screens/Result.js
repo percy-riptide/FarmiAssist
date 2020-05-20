@@ -7,10 +7,7 @@ import { ScrollView } from 'react-native-gesture-handler';
  export default function Result({route,navigation}){
     const {val} = route.params
     const {val1} = route.params
-    console.log(val1)
-    console.log(val)
     var a = val1-1
-    console.log(a)
     var rows = [];
     for(var i=0;i<=a;i++){
         rows.push(Object.values(val)[i])
@@ -19,7 +16,6 @@ import { ScrollView } from 'react-native-gesture-handler';
     for(var j =0;j<=a;j++){
         arr[j]={key:j,out:rows[j]}
     }
-    console.log(arr[1])
     
     return(
         <View>
@@ -35,8 +31,7 @@ import { ScrollView } from 'react-native-gesture-handler';
                             marginHorizontal: 70,
                             marginTop:10,
                             backgroundColor: '#79d488',
-                            borderRadius: 24,
-                            paddingBotton:15
+                            borderRadius: 24
                         }}>
                         <Text style={{color:'#ffffff', alignItems:'center', justifyContent:'center', fontSize:18}}>{i18n.t('ok')}</Text></TouchableOpacity>
       </ScrollView>

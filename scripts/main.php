@@ -23,13 +23,8 @@
 	$output7=shell_exec('python yield.py "'.$var.'"');
 	$output7 = trim($output7);
 	ob_start();
-    	if($output1 != ""){
-		$sql='select * from crops where crop="'.$output1.'"';
-		$result = mysqli_query($conn, $sql);
-		echo 'Crop ';
-		if(mysqli_num_rows($result)>0)
-			while($row = mysqli_fetch_assoc($result))
-				echo $row["description"]."\r\n";}
+    	if($output1 != "")
+		echo 'Crop '.'Here are your results for the plant:    '.$output1."\r\n";
     	if($output2 == "true"){
 		$sql='select * from input where crop="'.$output1.'"';
 		$result = mysqli_query($conn, $sql);

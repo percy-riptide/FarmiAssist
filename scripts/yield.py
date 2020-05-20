@@ -2,6 +2,8 @@ import main
 
 if 'yield' in main.filtered_sentence:
     print('true')
+if 'Yield' in main.filtered_sentence:
+    print('true')
 elif 'yields' in main.filtered_sentence:
     print('true')
 elif 'product' in main.filtered_sentence:

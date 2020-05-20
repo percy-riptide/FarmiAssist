@@ -35,7 +35,7 @@ export default function Language({navigation}) {
                             padding: 10, backgroundColor: '#322d96',
                             borderRadius: 24
                         }}>
-                        <Text style={{color:'#ffffff', alignItems:'center', justifyContent:'center', fontSize:18}}>English</Text></TouchableOpacity>
+                        <Text style={{color:'#ffffff', alignItems:'center', justifyContent:'center', fontSize:18}}> English </Text></TouchableOpacity>
                 </View>
                 <View style={{ margin: 50, width: 90 }} >
                     <TouchableOpacity
@@ -46,7 +46,7 @@ export default function Language({navigation}) {
                             backgroundColor: '#322d96',
                             borderRadius: 24
                      }}>
-                        <Text style={{color:'#ffffff', alignItems:'center', justifyContent:'center', fontSize:18}}>ಕನ್ನಡ</Text></TouchableOpacity>
+                        <Text style={{color:'#ffffff', alignItems:'center', justifyContent:'center', fontSize:18}}> ಕನ್ನಡ </Text></TouchableOpacity>
 
                      </View>
                 </View>
