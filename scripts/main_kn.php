@@ -10,6 +10,7 @@
 	$var = $obj['string'];
 	file_put_contents("kannada.txt","");
 	$var = $obj['string'];
+	$var='ಮೆಣಸಿನಕಾಯಿಗಾಗಿ ರಸಗೊಬ್ಬರಗಳು';
 	file_put_contents("kannada.txt",$var);
 	$var=shell_exec('python kannada.py');
 	$var=trim($var);
@@ -27,6 +28,21 @@
 	$output6 = trim($output6);
 	$output7=shell_exec('python yield.py "'.$var.'"');
 	$output7 = trim($output7);
+	$i=0;
+	if($output1 != "")
+		$i++;
+	if($output2 == "true")
+		$i++;
+	if($output3 == "true")
+		$i++;
+	if($output4 == "true")
+		$i++;
+	if($output5 == "true")
+		$i++;
+	if($output6 == "true")
+		$i++;
+	if($output7 == "true")
+		$i++;		
 	ob_start();
 	echo '{ ';
     	if($output1 != ""){
@@ -38,7 +54,11 @@
 		file_put_contents("english.txt",$tr);
 		$op=shell_exec('python english.py');
 		$op=file_get_contents("translated.txt");
-		echo $op.'"'.','."\r\n";
+		if($i > 1)
+			echo $op.'"'.','."\r\n";
+		else
+			echo $op.'"'."\r\n";
+		$i--;
 	}
     	if($output2 == "true"){
 		$sql='select * from input where crop="'.$output1.'"';
@@ -53,7 +73,11 @@
 				file_put_contents("english.txt",$tr);
 				$op=shell_exec('python english.py');
 				$op=file_get_contents("translated.txt");
+			if($i > 1)
 				echo $op.'"'.','."\r\n";
+			else
+				echo $op.'"'."\r\n";
+			$i--;
 			}
 	}
     	if($output3 == "true"){
@@ -69,7 +93,11 @@
 				file_put_contents("english.txt",$tr);
 				$op=shell_exec('python english.py');
 				$op=file_get_contents("translated.txt");
-				echo $op.'"'.','."\r\n";
+				if($i > 1)
+					echo $op.'"'.','."\r\n";
+				else
+					echo $op.'"'."\r\n";
+				$i--;
 			}
 	}
     	if($output4 == "true"){
@@ -85,7 +113,11 @@
 				file_put_contents("english.txt",$tr);
 				$op=shell_exec('python english.py');
 				$op=file_get_contents("translated.txt");
-				echo $op.'"'.','."\r\n";
+				if($i > 1)
+					echo $op.'"'.','."\r\n";
+				else
+					echo $op.'"'."\r\n";
+				$i--;
 			}
 	}
     	if($output5 == "true"){
@@ -101,7 +133,11 @@
 				file_put_contents("english.txt",$tr);
 				$op=shell_exec('python english.py');
 				$op=file_get_contents("translated.txt");
-				echo $op.'"'.','."\r\n";
+				if($i > 1)
+					echo $op.'"'.','."\r\n";
+				else
+					echo $op.'"'."\r\n";
+				$i--;
 			}
 	}
     	if($output6 == "true"){
@@ -117,7 +153,11 @@
 				file_put_contents("english.txt",$tr);
 				$op=shell_exec('python english.py');
 				$op=file_get_contents("translated.txt");
-				echo $op.'"'.','."\r\n";
+				if($i > 1)
+					echo $op.'"'.','."\r\n";
+				else
+					echo $op.'"'."\r\n";
+				$i--;
 			}
 	}
     	if($output7 == "true"){
@@ -133,7 +173,11 @@
 				file_put_contents("english.txt",$tr);
 				$op=shell_exec('python english.py');
 				$op=file_get_contents("translated.txt");
-				echo $op.'"'.','."\r\n";
+				if($i > 1)
+					echo $op.'"'.','."\r\n";
+				else
+					echo $op.'"'."\r\n";
+				$i--;
 			}
 	}
 	echo '}';
