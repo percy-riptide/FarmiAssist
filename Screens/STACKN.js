@@ -3,12 +3,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Home from './Home';
 import AboutUs from './AboutUs';
-import HowToUse from './HowToUse';
+
 import AgriDictionary from './AgriDictionary';
 
 const HomeStack = createStackNavigator();
 const AboutStack = createStackNavigator();
-const UseStack = createStackNavigator();
+
 const AgriStack = createStackNavigator();
 
 const HomeStackScreen = ({ navigation }) => (
@@ -39,21 +39,4 @@ export const AboutStackScreen = ({ navigation }) => (
         }} />
     </AboutStack.Navigator>
 );
-const UseStackScreen  = ({ navigation }) => (
-    <UseStack.Navigator screenOptions={{
-        headerStyle: {
-            backgroundColor: 'black',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-            fontWeight: 'bold'
-        }
-    }}>
-        <UseStack.Screen name="How To Use" component={HowToUse} options={{
-            title: 'Home Page',
-            headerLeft: () => (
-                <Icon.Button name="ios-menu" size={25} backgroundColor="#009387" onPress={() => navigation.openDrawer()}></Icon.Button>
-            )
-        }} />
-    </UseStack.Navigator>
-);
+
