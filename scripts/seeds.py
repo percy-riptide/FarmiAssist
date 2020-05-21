@@ -10,4 +10,4 @@ if x=='chillies' or x=='Chillies' or x=='chili' or x=='Chili':
 elif x=='onions' or x=='Onions':
     print('onion')
 else:
-    printf(x)
+    print(x)

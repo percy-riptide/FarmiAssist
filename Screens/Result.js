@@ -19,6 +19,7 @@ import { ScrollView } from 'react-native-gesture-handler';
     
     return(
         <View>
+            <View style={{alignItems:'center',justifyContent:'center',padding:44}}><Text style={{color:'#ffffff',textAlign:'center',fontSize:22,paddingTop:20}}>{i18n.t('result')}</Text></View>
             <ScrollView>
              <FlatList data={arr}
              renderItem={({item})=><TouchableOpacity keyboardAppearance = "dark" onPress={async()=>{Speech.stop(),Speech.speak(item.out)}}><Text style={{borderRadius:24,width: '95%', color: '#ffffff', padding: 15, fontSize: 20 ,borderWidth:1,margin:5}}>{item.out}</Text></TouchableOpacity>} />

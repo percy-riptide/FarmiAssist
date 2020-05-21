@@ -12,7 +12,7 @@
 	file_put_contents("kannada.txt",$var);
 	$var=shell_exec('python kannada.py');
 	$var=trim($var);
-    $output1=shell_exec('python seeds.py "'.$var.'"');
+    	$output1=shell_exec('python seeds.py "'.$var.'"');
 	$output1 = trim($output1);
 	$output2=shell_exec('python input.py "'.$var.'"');
 	$output2 = trim($output2);
