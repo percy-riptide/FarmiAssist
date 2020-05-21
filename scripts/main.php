@@ -8,7 +8,6 @@
 	$json = file_get_contents('php://input');
 	$obj = json_decode($json,true);
 	$var = $obj['string'];
-	$var = 'fertilizers for chilli';
     	$output1=shell_exec('python seeds.py "'.$var.'"');
 	$output1 = trim($output1);
 	$output2=shell_exec('python input.py "'.$var.'"');

@@ -10,7 +10,6 @@
 	$var = $obj['string'];
 	file_put_contents("kannada.txt","");
 	$var = $obj['string'];
-	$var='ಮೆಣಸಿನಕಾಯಿಗಾಗಿ ರಸಗೊಬ್ಬರಗಳು';
 	file_put_contents("kannada.txt",$var);
 	$var=shell_exec('python kannada.py');
 	$var=trim($var);
