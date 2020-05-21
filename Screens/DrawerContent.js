@@ -52,21 +52,7 @@ function DrawerContent(props) {
                         }
                         label={i18n.t('home')}
                         onPress={()=>props.navigation.navigate('Home',{val:i18n.locale})}/>
-                    
-                            
-
-                            
-                            <DrawerItem icon={({ color, size }) =>
-                                (
-                                    <Icon
-                                        name='help'
-                                        color={color}
-                                        size={size}
-                                    />
-                                )}
-                                label={i18n.t('use')}
-                                onPress={() => {props.navigation.navigate('How To Use') }}
-                        />
+    
                         <DrawerItem icon={({ color, size }) =>
                             (
                                 <Icon

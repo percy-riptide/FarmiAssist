@@ -25,6 +25,9 @@ function AgriDictionary({ navigation }) {
                     <Text style={{paddingTop: 34, fontSize: 16, paddingHorizontal: 5, color: 'white'}}>{i18n.t('dict')}</Text>
                 </View>
             </View>
+            <View style={{justifyContent:'space-evenly',alignItems:'center',paddingVertical:400}}>
+            <Text style={{color:'#ffffff',fontSize:26}}>{i18n.t('soon')}</Text>
+            </View>
         </View>
     )
 }
