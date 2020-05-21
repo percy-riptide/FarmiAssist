@@ -81,6 +81,7 @@ export default function Home({route, navigation}) {
                 })
                 .then((response) => response.json())
                 .then((responseData) => {
+                    console.log(responseData)
                     let len = Object.keys(responseData).length
                     setTextinput('');
                     navigation.navigate('Result',{"val":responseData,"val1":len})
